@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/transitions';
+
 .probi-card-hover {
   display: flex;
   align-items: flex-end;
@@ -68,7 +70,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     opacity: 1;
-    transition: 0.3s all ease;
+    @include default-transition();
   }
   &__image {
     position: absolute;
@@ -76,7 +78,7 @@ export default {
     left: 0;
     z-index: -10;
     filter: blur(0%);
-    transition: 0.3s all ease;
+    @include default-transition();
     img {
       height: 100%;
       width: 100%;
@@ -91,7 +93,7 @@ export default {
     padding: 10px;
     transform: translateY(100%);
     opacity: 0;
-    transition: 0.3s all ease;
+    @include default-transition();
     display: grid;
     place-content: center;
     &:empty {

@@ -41,6 +41,7 @@ export default {
 <style lang="scss">
 @use "sass:map";
 @import '@/assets/scss/variables';
+@import '@/assets/scss/transitions';
 
 .probi-button {
   outline: none;
@@ -50,7 +51,7 @@ export default {
   padding: 10px;
   background: none;
   border: none;
-  transition: 0.2s background ease;
+  @include default-transition();
   font-size: 1.1em;
   min-width: 30px;
   min-height: 30px;
