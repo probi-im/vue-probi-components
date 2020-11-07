@@ -1,0 +1,12 @@
+$primary-color: rgb(45, 143, 255);
+$secondary-color: rgb(241, 64, 10);
+$accent-color: rgb(171, 25, 255);
+$colors: (
+  'primary': $primary-color,
+  'secondary': $secondary-color,
+  'accent': $accent-color,
+);
+$color-variants: 'primary', 'secondary', 'accent';
+
+$light-gray: rgb(230, 230, 230);
+$white: rgb(255, 255, 255);

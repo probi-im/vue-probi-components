@@ -1,10 +1,24 @@
 {
   "name": "vue-probi-components",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.4",
+  "private": false,
+  "main": "./dist/vue-probi-components.common.js",
+  "unpkg": "./dist/vue-probi-components.min.js",
+  "files": [
+    "dist/*",
+    "src/**/*.vue"
+  ],
+  "keywords": [
+    "vue",
+    "scss",
+    "library",
+    "components"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "npm run build:lib & npm run build:wc",
+    "build:lib": "vue-cli-service build --target lib --name vue-probi-components ./src/entry.js",
+    "build:wc": "vue-cli-service build --no-clean --target wc --name vue-probi-components ./src/components/*.vue"
   },
   "dependencies": {
     "core-js": "^3.6.5",
