@@ -50,6 +50,14 @@
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
     </section>
+    <section>
+      <ProbiInput placeholder="test" />
+      <ProbiInput raised />
+      <ProbiInput :rounded="false" />
+      <ProbiInput raised :rounded="false" />
+      <ProbiInput :rounded="false" :size="'small'" />
+      <ProbiInput raised :size="'large'" />
+    </section>
   </div>
 </template>
 
@@ -57,13 +65,15 @@
 import ProbiButton from './components/Button.vue';
 import ProbiCard from './components/Card.vue';
 import ProbiCardHover from './components/CardHover.vue';
+import ProbiInput from './components/Input.vue';
 
 export default {
   name: 'App',
   components: {
     ProbiButton,
     ProbiCard,
-    ProbiCardHover
+    ProbiCardHover,
+    ProbiInput
   }
 };
 </script>
@@ -85,12 +95,9 @@ section {
   align-items: center;
   flex-wrap: wrap;
 }
-button {
-  margin: 10px;
-}
-.probi-card {
-  margin: 10px;
-}
+button,
+input,
+.probi-card,
 .probi-card-hover {
   margin: 10px;
 }
