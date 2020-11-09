@@ -1,6 +1,6 @@
 {
   "name": "vue-probi-components",
-  "version": "0.2.5",
+  "version": "0.2.51",
   "private": false,
   "main": "./dist/vue-probi-components.common.js",
   "unpkg": "./dist/vue-probi-components.min.js",
