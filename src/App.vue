@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <section>
+    <!-- <section>
       <ProbiButton :color="'primary'">Primary button</ProbiButton>
       <ProbiButton :color="'primary'" outlined>Outlined primary button</ProbiButton>
       <ProbiButton :color="'secondary'" :rounded="false">Square secondary button</ProbiButton>
@@ -14,8 +14,8 @@
       <ProbiButton :color="'primary'" :rounded="false" :size="'large'">
         Large primary button
       </ProbiButton>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <ProbiCard :outlined="true" :rounded="true" :width="0">
         <template v-slot:header>
           card header
@@ -49,14 +49,22 @@
       >
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
-    </section>
-    <section>
-      <ProbiInput placeholder="test" />
-      <ProbiInput raised />
-      <ProbiInput :rounded="false" />
-      <ProbiInput raised :rounded="false" />
-      <ProbiInput :rounded="false" :size="'small'" />
-      <ProbiInput raised :size="'large'" />
+    </section> -->
+    <section v-for="color in ['light', 'dark']" :key="color" :class="color">
+      <ProbiInput></ProbiInput>
+      <ProbiInput :rounded="false"> </ProbiInput>
+      <ProbiInput :size="'small'"> </ProbiInput>
+      <ProbiInput :size="'large'"> </ProbiInput>
+      <ProbiInput>
+        <template v-slot:prependIcon><i class="material-icons">face</i></template>
+      </ProbiInput>
+      <ProbiInput>
+        <template v-slot:appendIcon><i class="material-icons">stop</i></template>
+      </ProbiInput>
+      <ProbiInput>
+        <template v-slot:prependIcon><i class="material-icons">face</i></template>
+        <template v-slot:appendIcon><i class="material-icons">stop</i></template>
+      </ProbiInput>
     </section>
   </div>
 </template>
@@ -94,9 +102,15 @@ section {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  &.light {
+    background-color: #fefefe;
+  }
+  &.dark {
+    background-color: #333;
+  }
 }
-button,
-input,
+.probi-button,
+.probi-input,
 .probi-card,
 .probi-card-hover {
   margin: 10px;
