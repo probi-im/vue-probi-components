@@ -65,6 +65,12 @@
         <template v-slot:prependIcon><i class="material-icons">face</i></template>
         <template v-slot:appendIcon><i class="material-icons">stop</i></template>
       </ProbiInput>
+      <ProbiButton>Button</ProbiButton>
+      <ProbiButton disabled>Disabled button</ProbiButton>
+      <ProbiButton :rounded="false">Square button</ProbiButton>
+      <ProbiButton :rounded="false" disabled>Disabled square button</ProbiButton>
+      <ProbiButton :size="'small'">Small button</ProbiButton>
+      <ProbiButton :size="'large'">Large button</ProbiButton>
     </section>
   </div>
 </template>

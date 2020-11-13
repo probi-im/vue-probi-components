@@ -46,7 +46,7 @@ $focus-color: #5a6375;
 
 $border-base-color: #e4e6ea;
 $border-focus-color: #2d8eff;
-$border-hover-color: rgba($border-focus-color, 0.2);
+$border-hover-color: rgba($border-focus-color, 0.4);
 
 .probi-input {
   @include default-transition();
@@ -88,7 +88,7 @@ $border-hover-color: rgba($border-focus-color, 0.2);
     }
   }
   &:hover {
-    border-color: #91c4ff;
+    border-color: $border-hover-color;
     .input-icon {
       color: $hover-color;
     }
