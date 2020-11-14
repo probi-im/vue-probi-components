@@ -2,13 +2,19 @@
   <div
     class="probi-input"
     :class="[
+      disabled ? 'disabled' : '',
       inputFocused ? 'focused' : '',
       rounded ? 'probi-input-rounded' : '',
       size ? 'probi-input-' + size : ''
     ]"
   >
     <span v-if="$slots.prependIcon" class="input-icon"><slot name="prependIcon"></slot></span>
-    <input :placeholder="placeholder" @focus="inputFocused = true" @blur="inputFocused = false" />
+    <input
+      :disabled="disabled"
+      :placeholder="placeholder"
+      @focus="inputFocused = true"
+      @blur="inputFocused = false"
+    />
     <span v-if="$slots.appendIcon" class="input-icon">
       <slot name="appendIcon"></slot>
     </span>
@@ -19,6 +25,14 @@
 export default {
   name: 'ProbiInput',
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: 'Enter text here...'
+    },
     rounded: {
       type: Boolean,
       default: true
@@ -27,10 +41,6 @@ export default {
       type: String,
       default: '',
       validate: v => ['small', 'large'].includes(v)
-    },
-    placeholder: {
-      type: String,
-      default: 'Enter text here...'
     }
   },
   data: () => ({ inputFocused: false })
@@ -41,16 +51,14 @@ export default {
 @import '@/assets/scss/transitions';
 @import '@/assets/scss/variables';
 
-$input-height: 40px;
-
 .probi-input {
   @include default-transition();
   background-color: $background-secondary-color;
   border: 2px solid $border-base-color;
   display: flex;
   align-items: center;
-  min-height: $input-height;
-  height: $input-height;
+  min-height: $element-height;
+  height: $element-height;
   padding: 0 7px;
 
   .input-icon {
@@ -97,6 +105,23 @@ $input-height: 40px;
     }
   }
 
+  &.disabled {
+    border-color: $border-disabled-color;
+
+    .input-icon {
+      color: $text-disabled-color;
+      cursor: default;
+    }
+
+    input {
+      color: $text-disabled-color;
+
+      &::placeholder {
+        color: $text-disabled-color;
+      }
+    }
+  }
+
   &.focused {
     border-color: $border-focus-color;
     box-shadow: 0 0 0 2px $border-hover-color;
@@ -120,8 +145,8 @@ $input-height: 40px;
   }
 
   &-small {
-    min-height: $input-height - 10px;
-    height: $input-height - 10px;
+    min-height: $element-height - 10px;
+    height: $element-height - 10px;
     input {
       font-size: 0.8em;
       &:not(:first-child) {
@@ -133,8 +158,8 @@ $input-height: 40px;
     }
   }
   &-large {
-    min-height: $input-height + 10px;
-    height: $input-height + 10px;
+    min-height: $element-height + 10px;
+    height: $element-height + 10px;
     input {
       font-size: 1.2em;
       &:not(:first-child) {

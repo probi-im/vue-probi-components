@@ -5,6 +5,7 @@
     :class="[rounded ? 'probi-button-rounded' : '', size ? 'probi-button-' + size : '']"
   >
     <slot></slot>
+    <span v-if="!$slots.default">Button</span>
   </button>
 </template>
 
