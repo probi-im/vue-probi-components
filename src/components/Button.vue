@@ -30,22 +30,8 @@ export default {
 </script>
 
 <style lang="scss">
-@use "sass:map";
-@import '@/assets/scss/variables';
 @import '@/assets/scss/transitions';
-$element-height: 40px;
-$text-base-color: #5a6375;
-$text-disabled-color: #9898b5;
-// $hover-color: #757e8f;
-$focus-color: #5a6375;
-// 9898b5
-
-$border-base-color: #e4e6ea;
-$border-disabled-color: #eff0f1;
-$border-focus-color: #2d8eff;
-$border-hover-color: rgba($border-focus-color, 0.4);
-
-$background-base-color: white;
+@import '@/assets/scss/variables';
 
 .probi-button {
   @include default-transition();
@@ -59,7 +45,7 @@ $background-base-color: white;
   padding: 10px;
   font-size: 1.1em;
   min-width: 30px;
-  min-height: 30px;
+  min-height: $element-height;
   color: $text-base-color;
 
   &:hover:not(:disabled) {
@@ -86,10 +72,14 @@ $background-base-color: white;
     border-radius: 7px;
   }
   &-small {
+    min-height: $element-height - 10px;
+    height: $element-height - 10px;
     padding: 8px;
     font-size: 0.8em;
   }
   &-large {
+    min-height: $element-height + 10px;
+    height: $element-height + 10px;
     padding: 12px;
     font-size: 1.5em;
   }

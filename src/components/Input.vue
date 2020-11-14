@@ -39,18 +39,13 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/transitions';
-$input-height: 40px;
-$base-color: #9898b5;
-$hover-color: #757e8f;
-$focus-color: #5a6375;
+@import '@/assets/scss/variables';
 
-$border-base-color: #e4e6ea;
-$border-focus-color: #2d8eff;
-$border-hover-color: rgba($border-focus-color, 0.4);
+$input-height: 40px;
 
 .probi-input {
   @include default-transition();
-  background-color: #f5f6f8;
+  background-color: $background-secondary-color;
   border: 2px solid $border-base-color;
   display: flex;
   align-items: center;
@@ -63,7 +58,7 @@ $border-hover-color: rgba($border-focus-color, 0.4);
     flex-direction: column;
     justify-content: center;
     background-color: transparent;
-    color: $base-color;
+    color: $text-secondary-color;
     @include default-transition();
   }
 
@@ -74,11 +69,11 @@ $border-hover-color: rgba($border-focus-color, 0.4);
     font-size: 1em;
     outline: none;
     background-color: transparent;
-    color: $base-color;
+    color: $text-secondary-color;
     @include default-transition();
 
     &::placeholder {
-      color: $base-color;
+      color: $text-secondary-color;
     }
     &:not(:first-child) {
       padding-left: 7px;
@@ -90,14 +85,14 @@ $border-hover-color: rgba($border-focus-color, 0.4);
   &:hover {
     border-color: $border-hover-color;
     .input-icon {
-      color: $hover-color;
+      color: $text-base-color;
     }
 
     input {
-      color: $hover-color;
+      color: $text-base-color;
 
       &::placeholder {
-        color: $hover-color;
+        color: $text-base-color;
       }
     }
   }
@@ -105,17 +100,17 @@ $border-hover-color: rgba($border-focus-color, 0.4);
   &.focused {
     border-color: $border-focus-color;
     box-shadow: 0 0 0 2px $border-hover-color;
-    background-color: white;
+    background-color: $background-base-color;
 
     .input-icon {
-      color: $focus-color;
+      color: $text-base-color;
     }
 
     input {
-      color: $focus-color;
+      color: $text-base-color;
 
       &::placeholder {
-        color: $focus-color;
+        color: $text-base-color;
       }
     }
   }
