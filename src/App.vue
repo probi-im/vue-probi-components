@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <section>
+    <section class="hide">
       <ProbiButton :color="'primary'">Primary button</ProbiButton>
       <ProbiButton :color="'primary'" outlined>Outlined primary button</ProbiButton>
       <ProbiButton :color="'secondary'" :rounded="false">Square secondary button</ProbiButton>
@@ -14,43 +14,33 @@
       <ProbiButton :color="'primary'" :rounded="false" :size="'large'">
         Large primary button
       </ProbiButton>
-    </section> -->
-    <!-- <section>
+    </section>
+    <section class="hide">
       <ProbiCard :outlined="true" :rounded="true" :width="0">
-        <template v-slot:header>
-          card header
-        </template>
-        <template v-slot:content>
-          card content
-        </template>
-        <template v-slot:footer>
-          card footer
-        </template>
+        <template v-slot:header> card header </template>
+        <template v-slot:content> card content </template>
+        <template v-slot:footer> card footer </template>
       </ProbiCard>
     </section>
 
-    <section>
+    <section class="hide">
       <ProbiCardHover :title="'normal'">
         <template v-slot:text>test te</template>
       </ProbiCardHover>
       <ProbiCardHover
         :title="'small'"
         :size="'small'"
-        :imgSrc="
-          'https://billings.schoolspace.us/assets/facility_placeholder_square-2a7386a84e9ed7d126f124a39478556556bdc2ac4a178b05d761b4c9794cef0c.png'
-        "
+        :imgSrc="'https://billings.schoolspace.us/assets/facility_placeholder_square-2a7386a84e9ed7d126f124a39478556556bdc2ac4a178b05d761b4c9794cef0c.png'"
       ></ProbiCardHover>
       <ProbiCardHover
         :title="'largecardhover'"
         :size="'large'"
-        :imgSrc="
-          'https://billings.schoolspace.us/assets/facility_placeholder_square-2a7386a84e9ed7d126f124a39478556556bdc2ac4a178b05d761b4c9794cef0c.png'
-        "
+        :imgSrc="'https://billings.schoolspace.us/assets/facility_placeholder_square-2a7386a84e9ed7d126f124a39478556556bdc2ac4a178b05d761b4c9794cef0c.png'"
       >
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
-    </section> -->
-    <section v-for="color in ['light', 'dark']" :key="color" :class="color">
+    </section>
+    <section v-for="color in ['light', 'dark']" :key="color" :class="[color, 'hide']">
       <ProbiInput></ProbiInput>
       <ProbiInput disabled></ProbiInput>
       <ProbiInput :rounded="false"> </ProbiInput>
@@ -73,6 +63,13 @@
       <ProbiButton :size="'small'">Small button</ProbiButton>
       <ProbiButton :size="'large'">Large button</ProbiButton>
     </section>
+    <section class="light">
+      <ProbiToggle :value="true" :size="'x-small'" />
+      <ProbiToggle :value="false" :size="'small'" />
+      <ProbiToggle :value="true" />
+      <ProbiToggle :value="false" :size="'large'" />
+      <ProbiToggle :value="true" :size="'x-large'" />
+    </section>
   </div>
 </template>
 
@@ -81,6 +78,7 @@ import ProbiButton from './components/Button.vue';
 import ProbiCard from './components/Card.vue';
 import ProbiCardHover from './components/CardHover.vue';
 import ProbiInput from './components/Input.vue';
+import ProbiToggle from './components/Toggle.vue';
 
 export default {
   name: 'App',
@@ -88,8 +86,9 @@ export default {
     ProbiButton,
     ProbiCard,
     ProbiCardHover,
-    ProbiInput
-  }
+    ProbiInput,
+    ProbiToggle,
+  },
 };
 </script>
 
@@ -119,7 +118,11 @@ section {
 .probi-button,
 .probi-input,
 .probi-card,
-.probi-card-hover {
+.probi-card-hover,
+.probi-toggle {
   margin: 10px;
+}
+.hide {
+  display: none;
 }
 </style>
