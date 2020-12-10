@@ -40,7 +40,7 @@
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
     </section>
-    <section v-for="color in ['light', 'dark']" :key="color" :class="[color]">
+    <section v-for="color in ['light', 'dark']" :key="color" :class="[color, 'hide']">
       <ProbiInput></ProbiInput>
       <ProbiInput disabled></ProbiInput>
       <ProbiInput :rounded="false"> </ProbiInput>
@@ -63,12 +63,18 @@
       <ProbiButton :size="'small'">Small button</ProbiButton>
       <ProbiButton :size="'large'">Large button</ProbiButton>
     </section>
-    <section class="light">
+    <section class="light hide">
       <ProbiToggle :value="true" :size="'x-small'" />
       <ProbiToggle :value="false" :size="'small'" :rounded="false" />
       <ProbiToggle :value="true" :outlined="true" />
       <ProbiToggle :value="false" :size="'large'" />
       <ProbiToggle :value="true" :size="'x-large'" :rounded="false" />
+    </section>
+    <section class="light">
+      <ProbiLoader :width="20" />
+      <ProbiLoader />
+      <ProbiLoader :width="50" />
+      <ProbiLoader :strokeWidth="4" />
     </section>
   </div>
 </template>
@@ -79,6 +85,7 @@ import ProbiCard from './components/Card.vue';
 import ProbiCardHover from './components/CardHover.vue';
 import ProbiInput from './components/Input.vue';
 import ProbiToggle from './components/Toggle.vue';
+import ProbiLoader from './components/Loader.vue';
 
 export default {
   name: 'App',
@@ -88,6 +95,7 @@ export default {
     ProbiCardHover,
     ProbiInput,
     ProbiToggle,
+    ProbiLoader,
   },
 };
 </script>
@@ -119,7 +127,8 @@ section {
 .probi-input,
 .probi-card,
 .probi-card-hover,
-.probi-toggle {
+.probi-toggle,
+.probi-loader {
   margin: 10px;
 }
 .hide {
