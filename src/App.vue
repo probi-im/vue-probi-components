@@ -40,7 +40,7 @@
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
     </section>
-    <section v-for="color in ['light', 'dark']" :key="color" :class="[color, 'hide']">
+    <section v-for="color in ['light', 'dark']" :key="color" :class="[color]">
       <ProbiInput></ProbiInput>
       <ProbiInput disabled></ProbiInput>
       <ProbiInput :rounded="false"> </ProbiInput>
@@ -65,10 +65,10 @@
     </section>
     <section class="light">
       <ProbiToggle :value="true" :size="'x-small'" />
-      <ProbiToggle :value="false" :size="'small'" />
-      <ProbiToggle :value="true" />
+      <ProbiToggle :value="false" :size="'small'" :rounded="false" />
+      <ProbiToggle :value="true" :outlined="true" />
       <ProbiToggle :value="false" :size="'large'" />
-      <ProbiToggle :value="true" :size="'x-large'" />
+      <ProbiToggle :value="true" :size="'x-large'" :rounded="false" />
     </section>
   </div>
 </template>

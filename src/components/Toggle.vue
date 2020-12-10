@@ -1,7 +1,7 @@
 <template>
   <label class="probi-toggle" :style="{ '--scale': toggleScale }">
     <input type="checkbox" v-model="inputValue" />
-    <span class="slider round"></span>
+    <span class="slider" :class="{ rounded, outlined }"></span>
   </label>
 </template>
 
@@ -20,6 +20,10 @@ export default {
     value: {
       type: Boolean,
       default: false,
+    },
+    rounded: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
@@ -60,6 +64,10 @@ export default {
   --slider-size: calc(24px * var(--scale));
   --gap-size: calc(4px * var(--scale));
   --transition-duration: 0.1s;
+  --primary-color: #2974ff;
+  --hover-color: #9abeff;
+  --secondary-color: #ccc;
+
   position: relative;
   display: inline-block;
   height: calc(var(--gap-size) * 2 + var(--slider-size));
@@ -77,7 +85,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
     cursor: pointer;
     transition: calc(var(--transition-duration) * 3);
 
@@ -90,13 +97,29 @@ export default {
       right: 50%;
       background-color: #fff;
       transition: left var(--transition-duration),
-        right var(--transition-duration) var(--transition-duration);
+        right var(--transition-duration) calc(var(--transition-duration) / 2);
     }
-    &:hover {
-      background-color: #9abeff;
+    &:not(.outlined) {
+      background-color: var(--secondary-color);
+
+      &:hover {
+        background-color: var(--hover-color);
+      }
     }
 
-    &.round {
+    &.outlined {
+      border: 1px solid var(--secondary-color);
+
+      &:before {
+        border: 1px solid var(--secondary-color);
+      }
+
+      &:hover {
+        border-color: var(--hover-color);
+      }
+    }
+
+    &.rounded {
       border-radius: var(--slider-size);
 
       &:before {
@@ -106,13 +129,23 @@ export default {
   }
 
   input:checked + .slider {
-    background-color: #2974ff;
+    &:not(.outlined) {
+      background-color: var(--primary-color);
+    }
+
+    &.outlined {
+      border-color: var(--primary-color);
+    }
   }
   input:checked + .slider:before {
     left: 50%;
     right: var(--gap-size);
     transition: right var(--transition-duration),
-      left var(--transition-duration) var(--transition-duration);
+      left var(--transition-duration) calc(var(--transition-duration) / 2);
+  }
+  input:checked + .slider.outlined:before {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
   }
 }
 </style>
