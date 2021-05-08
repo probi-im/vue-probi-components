@@ -70,11 +70,16 @@
       <ProbiToggle :value="false" :size="'large'" />
       <ProbiToggle :value="true" :size="'x-large'" :rounded="false" />
     </section>
-    <section class="light">
+    <section class="light hide">
       <ProbiLoader :width="20" />
       <ProbiLoader />
       <ProbiLoader :width="50" />
       <ProbiLoader :strokeWidth="4" />
+    </section>
+    <section class="light">
+      <ProbiSlider :size="'small'" :fillColor="'pink'" :backgroundColor="'yellow'" />
+      <ProbiSlider :lazy="false" :value.sync="sliderValue" />
+      <ProbiSlider :size="'large'" :fillColor="'red'" />
     </section>
   </div>
 </template>
@@ -86,6 +91,7 @@ import ProbiCardHover from './components/CardHover.vue';
 import ProbiInput from './components/Input.vue';
 import ProbiToggle from './components/Toggle.vue';
 import ProbiLoader from './components/Loader.vue';
+import ProbiSlider from './components/Slider.vue';
 
 export default {
   name: 'App',
@@ -96,6 +102,27 @@ export default {
     ProbiInput,
     ProbiToggle,
     ProbiLoader,
+    ProbiSlider,
+  },
+  data() {
+    return {
+      sliderValue: 20,
+      sliderInterval: null,
+    };
+  },
+  methods: {
+    testSliders(v) {
+      // console.log(v);
+    },
+  },
+  mounted() {
+    this.sliderInterval = setInterval(() => {
+      if (this.sliderValue + 5 <= 100) this.sliderValue += 5;
+      else this.sliderValue = 0;
+    }, 1000);
+  },
+  destroyed() {
+    if (this.sliderInterval) clearInterval(this.sliderInterval);
   },
 };
 </script>
@@ -128,7 +155,8 @@ section {
 .probi-card,
 .probi-card-hover,
 .probi-toggle,
-.probi-loader {
+.probi-loader,
+.probi-slider {
   margin: 10px;
 }
 .hide {
