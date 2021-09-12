@@ -1,29 +1,17 @@
 <template>
   <div id="app">
-    <section class="dark">
+    <section>
       <ProbiButton :color="'primary'">Primary button</ProbiButton>
-      <ProbiButton :color="'primary'" outlined>Outlined primary button</ProbiButton>
-      <ProbiButton :color="'secondary'" :rounded="false">Square secondary button</ProbiButton>
-      <ProbiButton :color="'secondary'" outlined>Outlined secondary button</ProbiButton>
-      <ProbiButton :color="'accent'">Accent button</ProbiButton>
-      <ProbiButton :color="'accent'" outlined :rounded="false">
-        Outlined square accent button
-      </ProbiButton>
-      <ProbiButton :color="'primary'" :size="'small'">Small primary button</ProbiButton>
-      <ProbiButton :color="'primary'" outlined>Primary button</ProbiButton>
-      <ProbiButton :color="'primary'" :rounded="false" :size="'large'">
-        Large primary button
-      </ProbiButton>
     </section>
-    <section class="dark">
+    <!-- <section>
       <ProbiCard :outlined="true" :rounded="true" :width="0">
         <template v-slot:header> card header </template>
         <template v-slot:content> card content </template>
         <template v-slot:footer> card footer </template>
       </ProbiCard>
-    </section>
+    </section> -->
 
-    <section class="dark">
+    <!-- <section>
       <ProbiCardHover :title="'normal'">
         <template v-slot:text>test te</template>
       </ProbiCardHover>
@@ -39,44 +27,19 @@
       >
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
+    </section> -->
+    <section>
+      <ProbiInput v-model="inputText"></ProbiInput>
+      Text : {{ inputText }}
     </section>
-    <section v-for="color in ['dark', 'dark']" :key="color" :class="[color]">
-      <ProbiInput></ProbiInput>
-      <ProbiInput disabled></ProbiInput>
-      <ProbiInput :rounded="false"> </ProbiInput>
-      <ProbiInput :size="'small'"> </ProbiInput>
-      <ProbiInput :size="'large'"> </ProbiInput>
-      <ProbiInput>
-        <template v-slot:prependIcon><i class="material-icons">face</i></template>
-      </ProbiInput>
-      <ProbiInput>
-        <template v-slot:appendIcon><i class="material-icons">stop</i></template>
-      </ProbiInput>
-      <ProbiInput>
-        <template v-slot:prependIcon><i class="material-icons">face</i></template>
-        <template v-slot:appendIcon><i class="material-icons">stop</i></template>
-      </ProbiInput>
-      <ProbiButton></ProbiButton>
-      <ProbiButton disabled>Disabled button</ProbiButton>
-      <ProbiButton :rounded="false">Square button</ProbiButton>
-      <ProbiButton :rounded="false" disabled>Disabled square button</ProbiButton>
-      <ProbiButton :size="'small'">Small button</ProbiButton>
-      <ProbiButton :size="'large'">Large button</ProbiButton>
+    <section>
+      <ProbiToggle v-model="toggled" />
+      Toggle : {{ toggled }}
     </section>
-    <section class="dark">
-      <ProbiToggle :value="true" :size="'x-small'" />
-      <ProbiToggle :value="false" :size="'small'" :rounded="false" />
-      <ProbiToggle :value="true" :outlined="true" />
-      <ProbiToggle :value="false" :size="'large'" />
-      <ProbiToggle :value="true" :size="'x-large'" :rounded="false" />
-    </section>
-    <section class="dark">
-      <ProbiLoader :width="20" />
+    <section>
       <ProbiLoader />
-      <ProbiLoader :width="50" />
-      <ProbiLoader :strokeWidth="4" />
     </section>
-    <!-- <section class="light">
+    <!-- <section>
       <ProbiSlider :size="'small'" :fillColor="'pink'" :backgroundColor="'yellow'" />
       <ProbiSlider :lazy="false" :value.sync="sliderValue" />
       <ProbiSlider :size="'large'" :fillColor="'red'" />
@@ -106,6 +69,8 @@ export default {
   },
   data() {
     return {
+      inputText: "",
+      toggled: false,
       sliderValue: 20,
       sliderInterval: null,
     };
@@ -128,27 +93,31 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  height: 100vh;
 }
 section {
-  margin: 10px;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 20px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  &.light {
-    background-color: #fefefe;
-  }
-  &.dark {
-    background-color: #333;
-  }
 }
 .probi-button,
 .probi-input,

@@ -10,6 +10,7 @@
   >
     <span v-if="$slots.prependIcon" class="input-icon"><slot name="prependIcon"></slot></span>
     <input
+      v-model="inputValue"
       :disabled="disabled"
       :placeholder="placeholder"
       @focus="inputFocused = true"
@@ -41,7 +42,21 @@ export default {
       type: String,
       default: '',
       validate: v => ['small', 'large'].includes(v)
+    },
+    value: {
+      type: String,
+      default: ''
     }
+  },
+  computed: {
+    inputValue: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit('input', value);
+      },
+    },
   },
   data: () => ({ inputFocused: false })
 };

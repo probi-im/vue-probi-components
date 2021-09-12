@@ -39,19 +39,14 @@ export default {
       switch (this.size) {
         case 'x-small':
           return 0.5;
-          break;
         case 'small':
           return 0.75;
-          break;
         case 'large':
           return 1.25;
-          break;
         case 'x-large':
           return 1.5;
-          break;
         default:
           return 1;
-          break;
       }
     },
   },
