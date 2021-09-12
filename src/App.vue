@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <section class="hide">
+    <section class="dark">
       <ProbiButton :color="'primary'">Primary button</ProbiButton>
       <ProbiButton :color="'primary'" outlined>Outlined primary button</ProbiButton>
       <ProbiButton :color="'secondary'" :rounded="false">Square secondary button</ProbiButton>
@@ -15,7 +15,7 @@
         Large primary button
       </ProbiButton>
     </section>
-    <section class="hide">
+    <section class="dark">
       <ProbiCard :outlined="true" :rounded="true" :width="0">
         <template v-slot:header> card header </template>
         <template v-slot:content> card content </template>
@@ -23,7 +23,7 @@
       </ProbiCard>
     </section>
 
-    <section class="hide">
+    <section class="dark">
       <ProbiCardHover :title="'normal'">
         <template v-slot:text>test te</template>
       </ProbiCardHover>
@@ -40,7 +40,7 @@
         <template v-slot:text>this is a long text that should be wrapped</template>
       </ProbiCardHover>
     </section>
-    <section v-for="color in ['light', 'dark']" :key="color" :class="[color, 'hide']">
+    <section v-for="color in ['dark', 'dark']" :key="color" :class="[color]">
       <ProbiInput></ProbiInput>
       <ProbiInput disabled></ProbiInput>
       <ProbiInput :rounded="false"> </ProbiInput>
@@ -63,24 +63,24 @@
       <ProbiButton :size="'small'">Small button</ProbiButton>
       <ProbiButton :size="'large'">Large button</ProbiButton>
     </section>
-    <section class="light hide">
+    <section class="dark">
       <ProbiToggle :value="true" :size="'x-small'" />
       <ProbiToggle :value="false" :size="'small'" :rounded="false" />
       <ProbiToggle :value="true" :outlined="true" />
       <ProbiToggle :value="false" :size="'large'" />
       <ProbiToggle :value="true" :size="'x-large'" :rounded="false" />
     </section>
-    <section class="light hide">
+    <section class="dark">
       <ProbiLoader :width="20" />
       <ProbiLoader />
       <ProbiLoader :width="50" />
       <ProbiLoader :strokeWidth="4" />
     </section>
-    <section class="light">
+    <!-- <section class="light">
       <ProbiSlider :size="'small'" :fillColor="'pink'" :backgroundColor="'yellow'" />
       <ProbiSlider :lazy="false" :value.sync="sliderValue" />
       <ProbiSlider :size="'large'" :fillColor="'red'" />
-    </section>
+    </section> -->
   </div>
 </template>
 
